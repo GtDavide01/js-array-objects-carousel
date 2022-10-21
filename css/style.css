@@ -14,6 +14,12 @@
     width: 80%;
     margin: 0 auto;
 }
+.flex{
+    display: flex;
+}
+.center{
+    justify-content: center;
+}
 /* HEADER */
 header{
     height: 10vh;
@@ -47,4 +53,16 @@ main{
 /* FOOTER */
 footer{
     height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    margin: 0 5px;
+    padding: .8rem;
+    color: white;
+    background-color: #0d6efd;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: .5rem;
 }
