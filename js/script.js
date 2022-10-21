@@ -71,8 +71,15 @@ const addImage = setInterval(clickPrev , 3000);
 btnPrev.addEventListener("click" , clickPrev);
 btnNext.addEventListener("click" , clickNext);
 //recupero bottone per invertire ciclo
+let direction = true;
 const btnInvert = document.getElementById("invert")
-btnInvert.addEventListener("click" , invertImage )
+if (direction = true ){
+    btnInvert.addEventListener("click" , invertImage );
+    direction = false;
+} else {
+    addImage = setInterval(clickPrev ,3000);
+}
+
 
 
 
@@ -105,7 +112,7 @@ function addThumb (){
 }
 
 function invertImage ()
-{
+{   
     clearInterval(addImage);
     setInterval(clickNext ,3000);
 }
