@@ -67,8 +67,12 @@ const btnNext = document.getElementById("next");
 console.log(btnNext);
 const btnPrev = document.getElementById("prev");
 console.log(btnPrev);
+setInterval(clickPrev , 3000);
 btnPrev.addEventListener("click" , clickPrev);
 btnNext.addEventListener("click" , clickNext);
+
+
+
 
 
 //UI FUNCTIONS
