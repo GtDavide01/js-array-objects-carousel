@@ -70,15 +70,25 @@ console.log(btnPrev);
 
 btnPrev.addEventListener("click" , clickPrev);
 btnNext.addEventListener("click" , clickNext);
-const  addImage = setInterval(clickPrev , 3000);
+let addImage = setInterval(clickPrev , 2000);
 
 
 //recupero bottone per invertire ciclo
 const btnInvert = document.getElementById("invert")
-btnInvert.addEventListener("click" , invertImage );
+btnInvert.addEventListener("click" , function(){
+    clearInterval(addImage);
+    addImage = setInterval (clickNext , 2000);
+});
+const btnInvertRight = document.getElementById("invertright");
+btnInvertRight.addEventListener("click", function(){
+    clearInterval(addImage);
+    addImage = setInterval (clickPrev , 2000);
+})
 //recupero bottone per fermare scorrimento automatico 
 const btnStop = document.getElementById("stop");
-btnStop.addEventListener("click" , stopAll);
+btnStop.addEventListener("click" , function(){
+    clearInterval(addImage);
+});
 
 
 
@@ -111,26 +121,7 @@ function addThumb (){
         `
     }
 }
-function stopAll (){
-    clearInterval(addImage);
-    clearInterval(invertImage);
-}
 
-
-function invertImage ()
-{   
-    let direction = true ;
-    clearInterval(addImage); 
-    if ( direction = true ){
-        const invertImage = setInterval(clickNext ,3000);
-        direction= false;
-    }
-    
-    if( direction = false){
-        clearInterval(invertImage);
-    }
-   
-}
 // FUNCTION
 
 function clickPrev (){
