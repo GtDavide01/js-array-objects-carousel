@@ -52,6 +52,8 @@ const allThumbs = document.querySelector(".allthumbs");
 console.log(allThumbs);
 const cardPrincipalThumb = document.getElementsByClassName("cardThumb");
 console.log(cardPrincipalThumb);
+const thumbSecondary = document.getElementsByClassName("thumb");
+console.log(thumbSecondary);
 //Richiamo funzione per popolare in modo dinamico la tumbnail con l'immagine principale
 pricipalThumb();
 //Richiamo funzione per popolare in modo dinamico la thumbnail contenente tutte le immagini
@@ -59,23 +61,14 @@ addThumb();
 //Rendo visibile solo la prima immagine 
 let indexOfImg = 0 ; 
 cardPrincipalThumb[indexOfImg].classList.remove("none");
+thumbSecondary[indexOfImg].classList.remove("thumbactive");
 //recupero bottini html 
 const btnNext = document.getElementById("next");
 console.log(btnNext);
 const btnPrev = document.getElementById("prev");
 console.log(btnPrev);
-
 btnPrev.addEventListener("click" , clickPrev);
-btnNext.addEventListener("click" , clickNext)
-
-
-
-
-
-
-
-
-
+btnNext.addEventListener("click" , clickNext);
 
 
 //UI FUNCTIONS
@@ -98,7 +91,7 @@ function addThumb (){
     for ( let i = 0 ; i<images.length ; i++){
         const thisThumb = images[i];
         allThumbs.innerHTML += `
-        <div class="thumb">
+        <div class="thumb thumbactive">
             <img src=${thisThumb.image} alt="${thisThumb.image} ">
         </div>
         `
@@ -109,6 +102,7 @@ function addThumb (){
 
 function clickPrev (){
     cardPrincipalThumb[indexOfImg].classList.add("none");
+    thumbSecondary[indexOfImg].classList.add("thumbactive");
     if (indexOfImg < cardPrincipalThumb.length - 1){
         indexOfImg++ ;
     }else{
@@ -116,9 +110,11 @@ function clickPrev (){
     }
     cardPrincipalThumb[indexOfImg].classList.remove("none");
     cardPrincipalThumb[indexOfImg].classList.add("active");
+    thumbSecondary[indexOfImg].classList.remove("thumbactive");
 }
 
 function clickNext (){
+    thumbSecondary[indexOfImg].classList.add("thumbactive");
     cardPrincipalThumb[indexOfImg].classList.add("none");
     if (indexOfImg > 0 ){
         indexOfImg-- ;
@@ -127,4 +123,5 @@ function clickNext (){
     }
     cardPrincipalThumb[indexOfImg].classList.remove("none");
     cardPrincipalThumb[indexOfImg].classList.add("active");
+    thumbSecondary[indexOfImg].classList.remove("thumbactive");
 }

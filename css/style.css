@@ -64,14 +64,16 @@ main{
 .allthumbs{
     margin: 0 auto;
     width: 90%;
-    background-color: white;
     height: 15vh;
     display: flex;
     position: relative;
 }
+.thumbactive{
+    opacity: .6;
+}
 .thumb{
+    border: 5px solid black ;
     width: calc(100% / 5 );
-    border: 1px solid black;
     height: 15vh;
 }
 .thumb img{
