@@ -46,10 +46,85 @@ console.log(images);
 // Milestone 1:
 // Ora rimuoviamo i contenuti statici e usiamo l’array di oggetti letterali per popolare dinamicamente il carosello.
 //recupero tutti gli elementi Html di cui ho bisogno
+const wrapperOneThumb = document.querySelector(".wrapperthumbs");
+console.log(wrapperOneThumb);
 const allThumbs = document.querySelector(".allthumbs");
 console.log(allThumbs);
+const cardPrincipalThumb = document.getElementsByClassName("cardThumb");
+console.log(cardPrincipalThumb);
+//Richiamo funzione per popolare in modo dinamico la tumbnail con l'immagine principale
+pricipalThumb();
+//Richiamo funzione per popolare in modo dinamico la thumbnail contenente tutte le immagini
+addThumb();
+//Rendo visibile solo la prima immagine 
+let indexOfImg = 0 ; 
+cardPrincipalThumb[indexOfImg].classList.remove("none");
+//recupero bottini html 
+const btnNext = document.getElementById("next");
+console.log(btnNext);
+const btnPrev = document.getElementById("prev");
+console.log(btnPrev);
 
-for ( let i = 0 ; i<images.length ; i++){
-    const thisImage = images.image;
-    console.log(thisImage);  
+btnPrev.addEventListener("click" , clickPrev);
+btnNext.addEventListener("click" , clickNext)
+
+
+
+
+
+
+
+
+
+
+
+//UI FUNCTIONS
+function pricipalThumb(){
+    for ( let i = 0 ; i<images.length ; i++){
+        const thisThumb = images[i];
+        wrapperOneThumb.innerHTML += `
+        <div class="cardThumb none">
+            <img src=${thisThumb.image} alt="${thisThumb.image}">
+            <div class="info">
+                <h2>${thisThumb.title}</h2>
+                <p>${thisThumb.text}</p>
+            </div>
+        </div>
+        `
+    }
+}
+
+function addThumb (){
+    for ( let i = 0 ; i<images.length ; i++){
+        const thisThumb = images[i];
+        allThumbs.innerHTML += `
+        <div class="thumb">
+            <img src=${thisThumb.image} alt="${thisThumb.image} ">
+        </div>
+        `
+    }
+}
+
+// FUNCTION
+
+function clickPrev (){
+    cardPrincipalThumb[indexOfImg].classList.add("none");
+    if (indexOfImg < cardPrincipalThumb.length - 1){
+        indexOfImg++ ;
+    }else{
+        indexOfImg = 0 ; 
+    }
+    cardPrincipalThumb[indexOfImg].classList.remove("none");
+    cardPrincipalThumb[indexOfImg].classList.add("active");
+}
+
+function clickNext (){
+    cardPrincipalThumb[indexOfImg].classList.add("none");
+    if (indexOfImg > 0 ){
+        indexOfImg-- ;
+    }else{
+        indexOfImg = 4 ; 
+    }
+    cardPrincipalThumb[indexOfImg].classList.remove("none");
+    cardPrincipalThumb[indexOfImg].classList.add("active");
 }
