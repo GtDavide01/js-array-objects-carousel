@@ -72,18 +72,22 @@ btnPrev.addEventListener("click" , clickPrev);
 btnNext.addEventListener("click" , clickNext);
 let addImage = setInterval(clickPrev , 2000);
 
-
+let direction = true ; 
 //recupero bottone per invertire ciclo
 const btnInvert = document.getElementById("invert")
 btnInvert.addEventListener("click" , function(){
-    clearInterval(addImage);
-    addImage = setInterval (clickNext , 2000);
+    if(direction === true ){
+        clearInterval(addImage);
+        addImage = setInterval (clickNext , 2000);
+        direction = false ; 
+    } else {
+        clearInterval(addImage);
+        addImage = setInterval (clickPrev , 2000);
+        direction = true ; 
+    }
+    
 });
-const btnInvertRight = document.getElementById("invertright");
-btnInvertRight.addEventListener("click", function(){
-    clearInterval(addImage);
-    addImage = setInterval (clickPrev , 2000);
-})
+
 //recupero bottone per fermare scorrimento automatico 
 const btnStop = document.getElementById("stop");
 btnStop.addEventListener("click" , function(){
