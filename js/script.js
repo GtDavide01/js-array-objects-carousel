@@ -87,7 +87,7 @@ btnInvert.addEventListener("click" , function(){
     }
     
 });
-
+ 
 //recupero bottone per fermare scorrimento automatico 
 const btnStop = document.getElementById("stop");
 btnStop.addEventListener("click" , function(){
